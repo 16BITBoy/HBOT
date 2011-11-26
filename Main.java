@@ -39,6 +39,7 @@ public class Main extends HttpServlet
 		  
 		/* Proceso del mensaje */
 		String body=msg.getBody();
+
 		if(cmd.isCommand(body))
 		{
 			try
@@ -47,7 +48,7 @@ public class Main extends HttpServlet
 			}
 			catch (Exception e)
 			{
-				return;
+				sender.sendEverybody(e.getMessage()+"\n");
 			}
 		}
 		else //Mensaje de texto, lo enviamos.

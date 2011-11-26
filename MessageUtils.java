@@ -9,6 +9,7 @@ public class MessageUtils {
 		int i = 0;
 		while (tokens.hasMoreTokens()) {
 			splitMsg[i] = tokens.nextToken();
+			i++;
 		}
 		return splitMsg;
 	}
