@@ -7,9 +7,8 @@ import com.google.appengine.api.xmpp.XMPPService;
 
 public class Sender
 {
-
 	UserManager mngUser;
-	XMPPService xmpp;
+	public XMPPService xmpp;
 	
 	Sender(XMPPService xmpp,UserManager mngUser)
 	{
@@ -17,6 +16,8 @@ public class Sender
 		this.xmpp=xmpp;
 	}
 	
+	//TODO: Actualizar deprecated
+	@SuppressWarnings("deprecation")
 	int sendEverybody(String msg)
 	{
 		  for(User user:mngUser.getUsers())
@@ -35,6 +36,8 @@ public class Sender
 		  return 0;
 	}
 	
+	//TODO: Actualizar deprecated
+	@SuppressWarnings("deprecation")
 	int SendEveryBodyFrom(User UserFrom,String msg)
 	{
 		  for(User user:mngUser.getUsers())
@@ -56,6 +59,8 @@ public class Sender
 		return 0;
 	}
 	
+	//TODO: Actualizar deprecated
+	@SuppressWarnings("deprecation")
 	int SendTo(User UserTo,String msg)
 	{
 		JID jid=new JID(UserTo.getAddr());
