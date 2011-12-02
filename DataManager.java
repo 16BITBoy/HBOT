@@ -1,4 +1,4 @@
-package hbot;
+﻿﻿package hbot;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -65,8 +65,8 @@ public class DataManager
 		if(pq.countEntities()==0)
 		{
 			Entity FirstUser=new Entity("users");
-			FirstUser.setProperty("Nick","16BITBoy");
-			FirstUser.setProperty("email","aperezhrd@gmail.com");
+			FirstUser.setProperty("Nick","Zero");
+			FirstUser.setProperty("email","zero@h-sec.org");
 			FirstUser.setProperty("Snooze","false");
 			FirstUser.setProperty("Mod","true");
 			datastore.put(FirstUser);

@@ -51,4 +51,15 @@ public class UserManager
 	{
 		return lstUsers;
 	}
+	public User getUser(String NickOrEMail)throws Exception{
+		boolean IsNick = (NickOrEMail.indexOf('@')==-1)?true:false;
+		for(int i = 0;i<lstUsers.size();i++){
+			if(IsNick){
+				if(lstUsers.get(i).getNick().compareTo(NickOrEMail)==0)return lstUsers.get(i);
+			}else{
+				if(lstUsers.get(i).getAddr().compareTo(NickOrEMail)==0)return lstUsers.get(i);
+			}
+		}
+		throw new Exception();
+	}
 }

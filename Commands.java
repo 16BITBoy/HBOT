@@ -1,4 +1,4 @@
-package hbot;
+﻿package hbot;
 
 import java.util.*;
 import java.util.regex.*;
@@ -42,7 +42,8 @@ public class Commands
 		UsrCmds = "/help       {Muestra la ayuda del Bot}\n"+
 				"\n/salute     {Saluda a la comunidad}\n"+
 				"/source              {Muestra la direccion del sourcecode del bot}\r\n"+
-				"/snooze <on/off> {Activa y Desactiva la recepcion de mensajes}\n";
+				"/snooze <on/off> {Activa y Desactiva la recepcion de mensajes}\n"+
+				"/private <NickTo> <mensage> {Manda un mensage al usuario indicado}\n";
 	}
 
 	boolean isCommand(String msg)
@@ -141,9 +142,16 @@ public class Commands
 				}
 				Save();
 			break;
+
+			case 11: //Private nick msg. Manda un mensage a una persona
+				
+				Private(args.get(0),
+						msg.substring(msg
+								.indexOf(args.get(0))+args.get(0)
+								.length()+1)
+						,UserFrom
+						);
 			
-			case 11: //Private <email> msg. Manda un mensage a una persona
-				//TODO
 			break;
 		}
 
@@ -294,9 +302,10 @@ public class Commands
 		return 0;
 	}
 
-	int Private(String nick,String msg,User From)
+	int Private(String nick,String MsgSend,User From)
 	{
-		//TODO
+		String Msg = "Mensage privado de "+From.getNick()+":\n\n"+MsgSend;
+		sender.SendTo(From, nick, Msg);
 		return 0;
 	}
 }
