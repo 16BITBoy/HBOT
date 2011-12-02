@@ -12,10 +12,13 @@ public class User
 	public User(JID jid)
 	{
 		String strJID=jid.getId();
+		//Elimina "<JID: " de la representación en string del JID
 		if(strJID.indexOf("<JID: ")>=0)
 		{
 			strJID.replace("<JID: ","");
 		}
+		
+		//Obtenemos el nick y la dirección
 		Nick=strJID.substring(0,strJID.indexOf('@'));
 		Addr=strJID.substring(0,strJID.indexOf('/'));
 	}

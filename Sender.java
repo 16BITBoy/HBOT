@@ -18,6 +18,7 @@ public class Sender
 	
 	//TODO: Actualizar deprecated
 	@SuppressWarnings("deprecation")
+	//Envia el mensaje a todos los usuarios
 	int sendEverybody(String msg)
 	{
 		  for(User user:mngUser.getUsers())
@@ -38,6 +39,7 @@ public class Sender
 	
 	//TODO: Actualizar deprecated
 	@SuppressWarnings("deprecation")
+	//Envia el mensaje a todos los usuarios menos al que lo envió
 	int SendEveryBodyFrom(User UserFrom,String msg)
 	{
 		  for(User user:mngUser.getUsers())
@@ -61,6 +63,7 @@ public class Sender
 	
 	//TODO: Actualizar deprecated
 	@SuppressWarnings("deprecation")
+	//Envia el mensaje a un usuario en concreto
 	int SendTo(User UserTo,String msg)
 	{
 		JID jid=new JID(UserTo.getAddr());
@@ -76,27 +79,31 @@ public class Sender
 		  
 		return 0;
 	}
-	int SendTo(User UserFrom,String NickTo,String msg){
-		for(User user:mngUser.getUsers()){
+	//Envia el mensaje a un usuario en concreto, por su nick
+	int SendTo(User UserFrom,String NickTo,String msg)
+	{
+		for(User user:mngUser.getUsers())
+		{
 			
-			  if(user.getNick().compareTo(NickTo)==0){
+			  if(user.getNick().compareTo(NickTo)==0)
+			  {
 				  JID jid=new JID(user.getAddr());
-					  Message message = new MessageBuilder()
+				  Message message = new MessageBuilder()
 			  			.withRecipientJids(jid)
 			  			.withBody(msg)
 			  			.build();
 			  
-					  xmpp.sendMessage(message);
+				  xmpp.sendMessage(message);
 			  }
 		  }
 		
 		return 0;
 	}
 	
+	//Envía una invitación a una dirección dada
 	int Invite(String Addr)
 	{
 		xmpp.sendInvitation(new JID(Addr));
 		return 0;
-	}
-	
+	}	
 }
